@@ -5,12 +5,13 @@ const style = {
   recieved: `bg-[#e5e5ea] text-black float-left rounded-br-full`,
 };
 
-const Message = () => {
+const Message = ({ message, user }) => {
   return (
     <div>
       <div className={style.message}>
+        {/* the name is value hardcoded yet! */}
         <p className={style.name}>Dave</p>
-        <p>Hi, how are you doing?</p>
+        <p>{message.text}</p>
       </div>
     </div>
   );
