@@ -1,14 +1,13 @@
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import Message from './Message';
 
 const style = {
-  main: `flex flex-col p-[10px] relative overflow-auto`,
+  main: `flex flex-col p-[10px] relative overflow-auto flex-1`,
 };
 
 const Chat = () => {
-  const scroll = useRef();
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -27,11 +26,10 @@ const Chat = () => {
     <>
       <main className={style.main}>
         {messages.length > 0 &&
-          messages.map((message) => (
+          messages.map((message, i) => (
             <Message key={message.id} message={message} />
           ))}
       </main>
-      <span ref={scroll}></span>
     </>
   );
 };
