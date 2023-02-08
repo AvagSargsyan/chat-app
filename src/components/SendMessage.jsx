@@ -15,7 +15,7 @@ const SendMessage = () => {
     const { uid, displayName } = auth.currentUser;
     await addDoc(collection(db, 'messages'), {
       text: input,
-      name: displayName,
+      author: displayName,
       uid,
       timestamp: serverTimestamp(),
     });

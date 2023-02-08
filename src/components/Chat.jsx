@@ -5,6 +5,7 @@ import Message from './Message';
 
 const style = {
   main: `flex flex-col p-[10px] relative overflow-auto flex-1`,
+  emptyChat: `h-[100%] pt-[30vh]`,
 };
 
 const Chat = () => {
@@ -25,10 +26,13 @@ const Chat = () => {
   return (
     <>
       <main className={style.main}>
-        {messages.length > 0 &&
+        {messages.length > 0 ? (
           messages.map((message, i) => (
             <Message key={message.id} message={message} />
-          ))}
+          ))
+        ) : (
+          <div className={style.emptyChat}>No messages here yet...</div>
+        )}
       </main>
     </>
   );
