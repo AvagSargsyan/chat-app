@@ -12,12 +12,13 @@ const SendMessage = () => {
   const [input, setInput] = useState('');
 
   const sendMessage = async () => {
-    const { uid, displayName } = auth.currentUser;
+    const { uid, displayName, photoURL } = auth.currentUser;
     await addDoc(collection(db, 'messages'), {
       text: input,
       author: displayName,
       uid,
       timestamp: serverTimestamp(),
+      authorImage: photoURL,
     });
   };
 
